@@ -48,13 +48,15 @@ function populateShows(shows) {
   for (let show of shows) {
     console.log("show", show.image);
     console.log("url", show.image.medium);
-    // if(!show.image.medium){
-    //   let imageSrc = ""
-    // }
+    if (!show.image.medium) {
+      let imageSrc = "https://tinyurl.com/tv-missing";
+    } else {
+      imageSrc = show.image.medium;
+    }
     let $item = $(
       `<div class="col-md-6 col-lg-3 Show" data-show-id="${show.id}">
          <div class="card" data-show-id="${show.id}">
-          <img class="card-img-top" src="${show.image.medium}"></img>
+          <img class="card-img-top" src="${imageSrc}"></img>
            <div class="card-body">
              <h5 class="card-title">${show.name}</h5>
              <p class="card-text">${show.summary}</p>
